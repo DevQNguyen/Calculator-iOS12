@@ -29,7 +29,8 @@ class ViewController: UIViewController {
         }
     }
     
-    
+    private var calculator = CalculatorLogic()
+
     @IBAction func calcButtonPressed(_ sender: UIButton) {
         
         isFinishedTypingNumber = true
@@ -46,17 +47,12 @@ class ViewController: UIViewController {
                 isFinishedTypingNumber = false
             }
             
-            print("In calcMethod, right before let calculator, displayValue is: \(displayValue)")
-
-            let calculator = CalculatorLogic(number: displayValue)
-            
-            print("In calcMethod, right before guard let, displayValue is: \(displayValue)")
+            calculator.setNumber(displayValue)
             
             guard let result = calculator.calculate(symbol: calcMethod) else {
                 fatalError("The result of the calculation is nil.")
             }
             
-            print("In calcButtonPressed, Result is: \(result)")
             displayValue = result
             
             
