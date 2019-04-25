@@ -47,15 +47,12 @@ class ViewController: UIViewController {
                 isFinishedTypingNumber = false
             }
             
+            // Call setter func in caculator struct
             calculator.setNumber(displayValue)
             
-            guard let result = calculator.calculate(symbol: calcMethod) else {
-                fatalError("The result of the calculation is nil.")
+            if let result = calculator.calculate(symbol: calcMethod) {
+                displayValue = result
             }
-            
-            displayValue = result
-            
-            
         }
     }
 
